@@ -33,7 +33,7 @@ func _physics_process(delta):
 	#Horizontal
 	if Input.is_action_pressed("ui_right"):
 		direction.x = 1;
-    anim_player.play("walk_right")
+    		anim_player.play("walk_right")
 		character.set_rotation_degrees(0);
 	elif (Input.is_action_pressed("ui_left")):
 		direction.x = -1;
