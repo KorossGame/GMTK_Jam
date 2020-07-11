@@ -16,29 +16,40 @@ var rng = RandomNumberGenerator.new();
 
 #Fire
 export var bullet_speed = 250;
-var fire_rate = 0.2;
+var fire_rate = 0.4;
 var can_fire = true;
+
+#Rotation
+var character;
 
 func _init():
 	restoreMovement();
 
+func _ready():
+	character=get_node(".");
+
 func _physics_process(delta):
+	var charRotation = character.get_rotation();
 	#Horizontal
 	if Input.is_action_pressed("ui_right"):
 		direction.x = 1;
-		anim_player.play("walk_right")
+    		anim_player.play("walk_right")
+		character.set_rotation_degrees(0);
 	elif (Input.is_action_pressed("ui_left")):
 		direction.x = -1;
+		character.set_rotation_degrees(180);
 		anim_player.play("walk_left")
 	else: direction.x = 0;
 	
 	#Vertical
 	if (Input.is_action_pressed("ui_down")):
 		direction.y = 1;
-		anim_player.play("walk_down")
+    		anim_player.play("walk_down")
+		character.set_rotation_degrees(90);
 	elif (Input.is_action_pressed("ui_up")):
 		direction.y = -1;
-		anim_player.play("walk_up")
+    		character.set_rotation_degrees(-90);
+    		anim_player.play("walk_up")
 	else: direction.y = 0;
 	
 	#Idle Animations

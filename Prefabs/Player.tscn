@@ -142,8 +142,12 @@ tracks/0/keys = {
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
+
 collision_mask = 14
+
 script = ExtResource( 2 )
+speed = 300
+bullet_speed = 1000
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
