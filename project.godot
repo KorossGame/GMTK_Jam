@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "box",
 "language": "GDScript",
-"path": "res://Prefabs/Box.gd"
+"path": "res://Scripts/Box.gd"
 } ]
 _global_script_class_icons={
 "box": ""
