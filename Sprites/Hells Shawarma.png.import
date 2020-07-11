@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sprite-0001.png-70bd1a6433673a0f1a07449d081529fb.stex"
+path="res://.import/Hells Shawarma.png-a9327b4dad5d40661f4867cc0ca6e30f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Sprite-0001.png"
-dest_files=[ "res://.import/Sprite-0001.png-70bd1a6433673a0f1a07449d081529fb.stex" ]
+source_file="res://Sprites/Hells Shawarma.png"
+dest_files=[ "res://.import/Hells Shawarma.png-a9327b4dad5d40661f4867cc0ca6e30f.stex" ]
 
 [params]
 
