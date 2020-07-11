@@ -266,7 +266,26 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 4/shapes = [  ]
 4/z_index = 0
 
-[node name="World" type="Node2D"]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[node name="Game" type="Node2D"]
+script = SubResource( 1 )
 
 [node name="Walls" type="TileMap" parent="."]
 tile_set = SubResource( 12 )
@@ -316,4 +335,9 @@ position = Vector2( 176, 272 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 172.749, 139.938 )
+
 collision_mask = 12
+
+[node name="NextRoom" parent="." instance=ExtResource( 4 )]
+position = Vector2( 234.5, 177 )
+[connection signal="body_entered" from="NextRoom" to="NextRoom" method="_on_NextRoom_body_entered"]
