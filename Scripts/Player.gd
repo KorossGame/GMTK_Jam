@@ -8,6 +8,7 @@ onready var HealthBar = get_node("../../CanvasLayer/HealthBar/ProgressBar");
 onready var HP = maxHP setget _setHP;
 
 func kill():
+	anim_player.play("Death")
 	set_physics_process(false);
 	set_process(false);
 	yield (get_tree().create_timer(2), "timeout");
@@ -29,6 +30,7 @@ func respawn():
 	position=RespawnPoint.position;
 	set_physics_process(true);
 	set_process(true);
+	anim_player.play("idle_right")
 	_setHP(maxHP);
 	
 #Objects
@@ -168,8 +170,8 @@ func resetActions():
 		InputMap.add_action(action);
 		
 func _process(delta):
-#	if (Input.is_action_pressed("ui_select")):
-#		damage(10);
+	if (Input.is_action_pressed("ui_select")):
+		damage(10);
 		
 	#Check if player hits fire button
 	if (Input.is_action_pressed("fire") && can_fire):
