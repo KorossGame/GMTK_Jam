@@ -149,6 +149,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 9
+frame = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 15 )
@@ -160,7 +161,6 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
 [node name="BulletPoint" type="Node2D" parent="."]
-visible = false
 position = Vector2( 48, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

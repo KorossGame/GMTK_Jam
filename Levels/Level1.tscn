@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Prefabs/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/GotoNextRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/dungeon.png" type="Texture" id=3]
 [ext_resource path="res://Prefabs/Collumn.tscn" type="PackedScene" id=4]
@@ -267,24 +267,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 4/shapes = [  ]
 4/z_index = 0
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
-
 [node name="Game" type="Node2D"]
 script = SubResource( 1 )
 
@@ -303,9 +285,6 @@ collision_layer = 0
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 65537, 1, 0, 131073, 1, 0, 196608, -1610612735, 0, 196609, 3, 0, 262145, 1, 0, 262153, 1, 0, 327681, 1, 0, 327689, 1, 0, 393217, 1, 0, 393225, 1, 0, 458753, 1, 0, 458759, 1, 0, 458760, -1610612735, 0, 458761, 3, 0, 458764, 1, 0, 524289, 1, 0, 524295, 1, 0, 524300, 1, 0, 589825, 1, 0, 589831, 1, 0, 589836, 1, 0, 589858, 1, 0, 655361, 1, 0, 655364, -1610612735, 0, 655365, -1610612735, 0, 655366, -1610612735, 0, 655367, 3, 0, 655371, -1610612735, 0, 655372, 3, 0, 655394, 1, 0, 720905, 1, 0, 720930, 1, 0, 786441, 1, 0, 786466, 1, 0, 851977, 1, 0, 852002, 1, 0, 917513, 1, 0, 917538, 1, 0, 983043, 1, 0, 983044, -1610612735, 0, 983045, -1610612735, 0, 983046, -1610612735, 0, 983047, -1610612735, 0, 983048, -1610612735, 0, 983049, 1, 0, 983074, 1, 0, 1048579, 1, 0, 1048585, 1, 0, 1048610, 1, 0, 1114115, 2, 0, 1114116, -1610612735, 0, 1114117, -1610612735, 0, 1114118, -1610612735, 0, 1114119, -1610612735, 0, 1114120, -1610612735, 0, 1114121, 3, 0, 1114146, 1, 0, 1179651, 1, 0, 1179682, 1, 0, 1245187, 1, 0, 1245218, 1, 0, 1310723, 1, 0, 1310748, -1610612735, 0, 1310749, -1610612735, 0, 1310750, -1610612735, 0, 1310751, -1610612735, 0, 1310752, -1610612735, 0, 1310753, -1610612735, 0, 1310754, 1, 0, 1376259, 1, 0, 1376290, 1, 0, 1441795, 1, 0, 1441820, -1610612735, 0, 1441821, -1610612735, 0, 1441822, -1610612735, 0, 1441823, -1610612735, 0, 1441824, -1610612735, 0, 1441825, -1610612735, 0, 1441826, 3, 0, 1507331, 1, 0, 1572867, 1, 0, 1572898, 1, 0, 1638403, 1, 0, 1638434, 1, 0, 1703939, 1, 0, 1703970, 1, 0, 1769475, 1, 0, 1769506, 1, 0, 1835011, 1, 0, 1835042, 1, 0, 1900589, 1, 0, 1966125, 1, 0, 2031661, 1, 0, 2097197, 1, 0, 2162733, 1, 0, 2228261, -1610612735, 0, 2228262, -1610612735, 0, 2228263, -1610612735, 0, 2228264, -1610612735, 0, 2228265, -1610612735, 0, 2228266, -1610612735, 0, 2228267, -1610612735, 0, 2228268, -1610612735, 0, 2228269, 1, 0, 2293805, 1, 0, 2359333, 2, 0, 2359334, -1610612735, 0, 2359335, -1610612735, 0, 2359336, -1610612735, 0, 2359337, -1610612735, 0, 2359338, -1610612735, 0, 2359339, -1610612735, 0, 2359340, -1610612735, 0, 2359341, 3, 0, 2424869, 1, 0, 2490405, 1, 0, 2555941, 1, 0, 2621477, 1, 0, 2687013, 1, 0, 2752549, 1, 0, 2818085, 1, 0, 2883621, 1, 0, 2949157, 1, 0, 3014693, 1, 0, 3080229, 1, 0, 3145765, 1, 0, 3211301, 1, 0, 3276837, 1, 0, 3342380, 1, 0, 3407916, 1, 0, 3473452, 1, 0, 3538988, 1, 0, 3604524, 1, 0 )
-
-[node name="Bullet" parent="." instance=ExtResource( 1 )]
-position = Vector2( 193.1, 57.4138 )
 
 [node name="Shawarma" parent="." instance=ExtResource( 5 )]
 position = Vector2( 110.871, 191.645 )
@@ -339,9 +318,8 @@ position = Vector2( 367.892, 173.47 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 172.749, 139.938 )
-
 collision_mask = 12
 
-[node name="NextRoom" parent="." instance=ExtResource( 4 )]
-position = Vector2( 234.5, 177 )
-[connection signal="body_entered" from="NextRoom" to="NextRoom" method="_on_NextRoom_body_entered"]
+[node name="NextRoom" parent="." instance=ExtResource( 1 )]
+position = Vector2( 317.366, 414.198 )
+scale = Vector2( 10, 1 )
