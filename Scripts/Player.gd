@@ -3,7 +3,6 @@ extends KinematicBody2D
 #Objects
 var bullet = preload("res://Prefabs/Bullet.tscn");
 
-#Movement
 export var speed = 150;
 var direction = Vector2();
 
@@ -82,6 +81,8 @@ func _physics_process(delta):
 		
 	else: direction.y = 0;
 	
+	
+	
 	#Idle Animations
 	if (Input.is_action_just_released("ui_right")):
 		anim_player.play("idle_right")
@@ -91,47 +92,20 @@ func _physics_process(delta):
 		anim_player.play("idle_down")
 	elif (Input.is_action_just_released("idle_up")):
 		anim_player.play("idle_down")
-
+	
 	#Move
 	move_and_slide(direction * speed);
-
-func restoreMovement():
-	resetActions();
-	#Aplly normal movement
-	for i in len(events):
-		var newEvent = InputEventKey.new()
-		newEvent.scancode = events[i]
-		InputMap.action_add_event(actions[i], newEvent);
-		
-func newMovement():
-	var usedActions=[];
-	resetActions();
-	 
-	for event in events:
-		var newEvent = InputEventKey.new()
-		newEvent.scancode = event
-		var allSet = false;
-		
-		while (!allSet):
-			randomize();
-			var my_random_number = rng.randi_range(0,3);
-			
-			if usedActions.has(my_random_number):
-				pass
-			else:
-				usedActions.append(my_random_number);
-				allSet=!allSet;
-				InputMap.action_add_event(actions[my_random_number], newEvent);
 	
-func resetActions():
-	#Delete movement binds if such exists
-	for action in actions:
-		InputMap.erase_action(action);
-	#Add new binds
-	for action in actions:
-		InputMap.add_action(action);
+	if get_slide_count() > 0:
+		check_box_collision(direction)
+
+export var bullet_speed = 250;
+var fire_rate = 0.2;
+var can_fire = true;
 
 func _process(delta):
+	
+	
 	#Check if player hits fire button
 	if (Input.is_action_pressed("fire") && can_fire):
 		#Create instance
@@ -143,3 +117,11 @@ func _process(delta):
 		can_fire = !can_fire;
 		yield (get_tree().create_timer(fire_rate), "timeout");
 		can_fire = !can_fire;
+
+export var push_speed = 50
+func check_box_collision(motion: Vector2) -> void:
+	if abs(motion.x) + abs(motion.y) > 1:
+		return
+	var box : = get_slide_collision(0).collider as box
+	if box: 
+		box.push(push_speed * motion)
