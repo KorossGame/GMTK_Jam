@@ -7,6 +7,8 @@ var bullet = preload("res://Prefabs/Bullet.tscn");
 export var speed = 150;
 var direction = Vector2();
 
+onready var anim_player: AnimationPlayer = get_node("AnimationPlayer");
+
 #Movement binds
 var actions=["ui_left", "ui_up", "ui_down", "ui_right"];
 var events=[KEY_A, KEY_W, KEY_S, KEY_D];
@@ -24,17 +26,31 @@ func _physics_process(delta):
 	#Horizontal
 	if Input.is_action_pressed("ui_right"):
 		direction.x = 1;
+		anim_player.play("walk_right")
 	elif (Input.is_action_pressed("ui_left")):
 		direction.x = -1;
+		anim_player.play("walk_left")
 	else: direction.x = 0;
 	
 	#Vertical
 	if (Input.is_action_pressed("ui_down")):
 		direction.y = 1;
+		anim_player.play("walk_down")
 	elif (Input.is_action_pressed("ui_up")):
 		direction.y = -1;
+		anim_player.play("walk_up")
 	else: direction.y = 0;
 	
+	#Idle Animations
+	if (Input.is_action_just_released("ui_right")):
+		anim_player.play("idle_right")
+	elif (Input.is_action_just_released("ui_left")):
+		anim_player.play("idle_left")
+	elif (Input.is_action_just_released("ui_down")):
+		anim_player.play("idle_down")
+	elif (Input.is_action_just_released("idle_up")):
+		anim_player.play("idle_down")
+
 	#Move
 	move_and_slide(direction * speed);
 
