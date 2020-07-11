@@ -68,34 +68,10 @@ ui_down={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
-ui_page_up={
-"deadzone": 0.5,
-"events": [  ]
-}
-ui_page_down={
-"deadzone": 0.5,
-"events": [  ]
-}
-ui_home={
-"deadzone": 0.5,
-"events": [  ]
-}
-ui_end={
-"deadzone": 0.5,
-"events": [  ]
-}
-fire={
-"deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
- ]
-}
 
 [layer_names]
 
 2d_physics/layer_1="Hero"
-2d_physics/layer_2="NextLevel"
-2d_physics/layer_3="NextRoom"
-2d_physics/layer_4="Enemy"
-2d_physics/layer_5="Environment"
-2d_physics/layer_6="PowerUP"
-2d_physics/layer_7="Bullets"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Items"
+2d_physics/layer_4="World"

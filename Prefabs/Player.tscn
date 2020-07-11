@@ -1,24 +1,161 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Sprites/Wall.jpg" type="Texture" id=1]
+[ext_resource path="res://Sprites/Character.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.0764, 15.9848 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 14.0
+height = 0.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle_down"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 18 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle_left"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle_right"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 27 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle_up"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 19, 20, 21, 22, 23, 24, 25, 26 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14, 15, 16, 17 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 28, 29, 30, 31, 32, 33, 34, 35 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
-collision_mask = 62
+
+collision_mask = 14
+
 script = ExtResource( 2 )
 speed = 300
 bullet_speed = 1000
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -4.76837e-07, 7.15256e-07 )
 texture = ExtResource( 1 )
+vframes = 4
+hframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 15 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -27,4 +164,15 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
 [node name="BulletPoint" type="Node2D" parent="."]
+visible = false
 position = Vector2( 48, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle_down = SubResource( 2 )
+anims/idle_left = SubResource( 3 )
+anims/idle_right = SubResource( 4 )
+anims/idle_up = SubResource( 5 )
+anims/walk_down = SubResource( 6 )
+anims/walk_left = SubResource( 7 )
+anims/walk_right = SubResource( 8 )
+anims/walk_up = SubResource( 9 )
