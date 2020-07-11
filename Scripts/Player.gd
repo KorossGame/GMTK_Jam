@@ -1,5 +1,36 @@
 extends KinematicBody2D
 
+#Health
+var maxHP = 100;
+onready var invulnerabilityTimer = get_node("../../InvulnerabilityTimer");
+onready var RespawnPoint = get_node("../../RespawnPoint");
+onready var HealthBar = get_node("../../CanvasLayer/HealthBar/ProgressBar");
+onready var HP = maxHP setget _setHP;
+
+func kill():
+	set_physics_process(false);
+	set_process(false);
+	yield (get_tree().create_timer(2), "timeout");
+	respawn();
+	
+func damage(amount):
+	if (invulnerabilityTimer.is_stopped()):
+		invulnerabilityTimer.start();
+		_setHP(HP-amount);
+
+func _setHP(value):
+	var prevHP=HP;
+	HP = clamp(value, 0 , maxHP);
+	HealthBar.value=HP;
+	if (HP==0):
+		kill()
+	
+func respawn():
+	position=RespawnPoint.position;
+	set_physics_process(true);
+	set_process(true);
+	_setHP(maxHP);
+	
 #Objects
 var bullet = preload("res://Prefabs/Bullet.tscn");
 
@@ -31,6 +62,8 @@ func _init():
 func _ready():
 	characterCam=get_node("Camera2D");
 	bulletPoint=get_node("BulletPoint");
+	damage(0);
+	anim_player.play("idle_right");
 
 func _physics_process(delta):
 	var charRotation = characterCam.get_rotation();
@@ -89,7 +122,7 @@ func _physics_process(delta):
 	elif (Input.is_action_just_released("ui_down")):
 		anim_player.play("idle_down")
 	elif (Input.is_action_just_released("idle_up")):
-		anim_player.play("idle_down")
+		anim_player.play("idle_up")
 	
 	#Move
 	move_and_slide(direction * speed);
@@ -135,7 +168,9 @@ func resetActions():
 		InputMap.add_action(action);
 		
 func _process(delta):
-	
+#	if (Input.is_action_pressed("ui_select")):
+#		damage(10);
+		
 	#Check if player hits fire button
 	if (Input.is_action_pressed("fire") && can_fire):
 		#Create instance
@@ -149,7 +184,7 @@ func _process(delta):
 		can_fire = !can_fire;
 
 export var push_speed = 50
-func check_box_collision(motion: Vector2) -> void:
+func check_box_collision(motion):
 	if abs(motion.x) + abs(motion.y) > 1:
 		return
 	var box : = get_slide_collision(0).collider as box
