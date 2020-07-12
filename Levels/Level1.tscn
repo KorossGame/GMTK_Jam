@@ -7,6 +7,9 @@
 [ext_resource path="res://Prefabs/Shawarma.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sprites/Stickman rage.png" type="Texture" id=6]
 [ext_resource path="res://Prefabs/Box.tscn" type="PackedScene" id=7]
+
+[ext_resource path="res://Prefabs/RestoreSwitch.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Timer.gd" type="Script" id=9]
 [ext_resource path="res://Prefabs/UI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Prefabs/RespawnPoint.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Prefabs/InvulnerabilityTimer.tscn" type="PackedScene" id=10]
@@ -273,6 +276,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="Game" type="Node2D"]
 script = SubResource( 1 )
 
+[node name="Timer" type="Timer" parent="."]
+script = ExtResource( 9 )
+
 [node name="Walls" type="TileMap" parent="."]
 tile_set = SubResource( 12 )
 cell_size = Vector2( 32, 32 )
@@ -299,21 +305,24 @@ position = Vector2( 65.4626, 190.804 )
 position = Vector2( 706.696, 234.336 )
 texture = ExtResource( 6 )
 
+[node name="Switch" parent="." instance=ExtResource( 8 )]
+position = Vector2( 208, 848 )
+
 [node name="YSort" type="YSort" parent="."]
 
-[node name="StaticBody2D2" parent="YSort" instance=ExtResource( 4 )]
+[node name="Collumn2" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 144, 272 )
 
-[node name="StaticBody2D" parent="YSort" instance=ExtResource( 4 )]
+[node name="Collumn" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 272, 176 )
 
-[node name="StaticBody2D3" parent="YSort" instance=ExtResource( 4 )]
+[node name="Collumn3" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 368, 272 )
 
-[node name="StaticBody2D4" parent="YSort" instance=ExtResource( 4 )]
+[node name="Collumn4" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 208, 272 )
 
-[node name="StaticBody2D5" parent="YSort" instance=ExtResource( 4 )]
+[node name="Collumn5" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 176, 272 )
 
 [node name="Box" parent="YSort" instance=ExtResource( 7 )]

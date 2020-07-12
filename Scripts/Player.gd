@@ -36,6 +36,7 @@ func respawn():
 #Objects
 var bullet = preload("res://Prefabs/Bullet.tscn");
 
+export var push_speed = 50
 export var speed = 150;
 var direction = Vector2();
 
@@ -185,6 +186,7 @@ func _process(delta):
 		yield (get_tree().create_timer(fire_rate), "timeout");
 		can_fire = !can_fire;
 
+
 export var push_speed = 50
 func check_box_collision(motion):
 	if abs(motion.x) + abs(motion.y) > 1:
@@ -192,3 +194,4 @@ func check_box_collision(motion):
 	var box : = get_slide_collision(0).collider as box
 	if box: 
 		box.push(push_speed * motion)
+
