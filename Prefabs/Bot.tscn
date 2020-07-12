@@ -1,10 +1,11 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Sprites/Sprite-0001.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Bot.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 13.9783 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 14.0
+height = 0.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "Death"
@@ -166,10 +167,12 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6, 7, 8 ]
 }
 
-[node name="Player" type="KinematicBody2D" groups=[
-"player",
+[node name="Bot" type="KinematicBody2D" groups=[
+"enemy",
 ]]
-collision_mask = 62
+position = Vector2( 215.464, 123.252 )
+collision_layer = 2
+collision_mask = 25
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -181,11 +184,6 @@ frame = 36
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 15 )
 shape = SubResource( 1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
 
 [node name="BulletPoint" type="Node2D" parent="."]
 position = Vector2( 48, 0 )

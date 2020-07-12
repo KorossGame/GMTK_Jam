@@ -6,13 +6,16 @@ onready var invulnerabilityTimer = get_node("../../InvulnerabilityTimer");
 onready var RespawnPoint = get_node("../../RespawnPoint");
 onready var HealthBar = get_node("../../CanvasLayer/HealthBar/ProgressBar");
 onready var HP = maxHP setget _setHP;
+var canDie=true;
 
 func kill():
-	anim_player.play("Death")
-	set_physics_process(false);
-	set_process(false);
-	yield (get_tree().create_timer(2), "timeout");
-	respawn();
+	if (canDie):
+		anim_player.play("Death")
+		canDie=!canDie;
+		set_physics_process(false);
+		set_process(false);
+		yield (get_tree().create_timer(2), "timeout");
+		respawn();
 	
 func damage(amount):
 	if (invulnerabilityTimer.is_stopped()):
@@ -32,6 +35,7 @@ func respawn():
 	set_process(true);
 	anim_player.play("idle_right")
 	_setHP(maxHP);
+	canDie=!canDie;
 	
 #Objects
 var bullet = preload("res://Prefabs/Bullet.tscn");
@@ -57,7 +61,7 @@ var characterCam;
 var bulletPoint;
 
 #Offset from Player center
-var bulletOffset = 40;
+var bulletOffset = 20;
 
 #PowerUP time
 var timer;
@@ -136,7 +140,7 @@ func _physics_process(delta):
 		
 		#Apply Rotation of cam
 		characterCam.set_rotation_degrees(90);
-		bulletPoint.position = Vector2(0, bulletOffset);
+		bulletPoint.position = Vector2(0, 40);
 		
 		#Animation
 		anim_player.play("walk_down")
@@ -201,14 +205,8 @@ func resetActions():
 	#Add new binds
 	for action in actions:
 		InputMap.add_action(action);
-		
-func _process(delta):
-	#Timers
-	#print(timer.get_time_left());
-	#print(timer1.get_time_left());
 	
-	if (Input.is_action_pressed("ui_select")):
-		damage(10);
+func _process(delta):
 
 	#Check if player hits fire button
 	if (Input.is_action_pressed("fire") && can_fire):
