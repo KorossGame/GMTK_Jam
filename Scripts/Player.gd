@@ -49,7 +49,7 @@ var rng = RandomNumberGenerator.new();
 
 #Fire
 export var bullet_speed = 250;
-var fire_rate = 0.4;
+export var fire_rate = 0.4;
 var can_fire = true;
 
 #Rotation
@@ -59,15 +59,51 @@ var bulletPoint;
 #Offset from Player center
 var bulletOffset = 40;
 
+#PowerUP time
+var timer;
+var timer1;
+var powerUPTime=20;
+
 func _init():
 	restoreMovement();
 
 func _ready():
 	characterCam=get_node("Camera2D");
 	bulletPoint=get_node("BulletPoint");
-	damage(0);
+  damage(0);
 	anim_player.play("idle_right");
+	rng.randomize();
+	#Timer for 1st powerUP
+	timer = Timer.new();
+	timer.set_one_shot(true);
+	timer.set_wait_time(powerUPTime);
+	timer.connect("timeout", self, "fire_rate_timer_done");
+	add_child(timer);
+	#Timer for 2nd powerUP
+	timer1 = Timer.new();
+	timer1.set_one_shot(true);
+	timer1.set_wait_time(powerUPTime);
+	timer1.connect("timeout", self, "speed_timer_done");
+	add_child(timer1);
+	
+func fire_rate_timer_done():
+	fire_rate=0.4;
 
+func speed_timer_done():
+	speed=250;
+
+func activatePowerUP(powerUP):
+	if (powerUP==0):
+		fire_rate=0.2;
+		timer.start()
+	elif (powerUP==1):
+		speed=500;
+		timer1.start();
+	elif (powerUP==2):
+		restoreMovement();
+	elif (powerUP==3):
+		_setUP(100)
+		
 func _physics_process(delta):
 	var charRotation = characterCam.get_rotation();
 	
@@ -128,7 +164,7 @@ func _physics_process(delta):
 		anim_player.play("idle_up")
 	
 	#Move
-	move_and_slide(direction * speed);
+	move_and_slide(direction.normalized() * speed);
 	
 	if get_slide_count() > 0:
 		check_box_collision(direction)
@@ -142,7 +178,6 @@ func restoreMovement():
 		InputMap.action_add_event(actions[i], newEvent);
 		
 func newMovement():
-	
 	var usedActions=[];
 	resetActions();
 	 
@@ -150,11 +185,8 @@ func newMovement():
 		var newEvent = InputEventKey.new()
 		newEvent.scancode = event
 		var allSet = false;
-		
 		while (!allSet):
-			randomize();
 			var my_random_number = rng.randi_range(0,3);
-			
 			if usedActions.has(my_random_number):
 				pass
 			else:
@@ -171,9 +203,13 @@ func resetActions():
 		InputMap.add_action(action);
 		
 func _process(delta):
+	#Timers
+	#print(timer.get_time_left());
+	#print(timer1.get_time_left());
+	
 	if (Input.is_action_pressed("ui_select")):
 		damage(10);
-		
+
 	#Check if player hits fire button
 	if (Input.is_action_pressed("fire") && can_fire):
 		#Create instance
