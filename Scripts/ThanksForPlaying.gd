@@ -1,5 +1,5 @@
 extends Node2D
-
+	
 const section_time := 2.0
 const line_time := 0.3
 const base_speed := 100
@@ -31,7 +31,9 @@ var credits = [
 		"Eduard Strazd",
 	],[
 		"Art",
-		"Eduard Strazd",
+		"Tileset: HorusKDI [https://opengameart.org]",
+		"Items: Henrique Lazarini (7Soul1) [https://opengameart.org]",
+		"Characters: wulax [https://opengameart.org"
 	],[
 		"Music",
 		"Otto Halmén [https://opengameart.org]",

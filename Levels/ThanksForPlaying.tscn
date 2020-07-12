@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://DUNGRG__.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/ThanksForPlaying.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/Final.ogg" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -43,3 +44,8 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -25.0
+autoplay = true

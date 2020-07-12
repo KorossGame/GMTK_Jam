@@ -1,6 +1,5 @@
 extends RichTextLabel
 
-
 onready var anim_player: AnimationPlayer = get_node("AnimationPlayer");
 
 func _on_RestoreSwitch_body_entered(body):

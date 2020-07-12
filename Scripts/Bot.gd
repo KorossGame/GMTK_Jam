@@ -36,6 +36,7 @@ func kill():
 		set_process(false);
 		canDie=!canDie
 		yield (get_tree().create_timer(0.6), "timeout")	
+		
 		queue_free()
 	
 
@@ -88,7 +89,7 @@ func _process(delta):
 			can_fire = !can_fire;
 
 var eyeOffset = 10;
-var vision = 600;
+var vision = 900;
 
 func seePlayer():
 	var centerEye = get_global_position();
