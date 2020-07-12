@@ -70,7 +70,7 @@ func _init():
 func _ready():
 	characterCam=get_node("Camera2D");
 	bulletPoint=get_node("BulletPoint");
-  damage(0);
+	damage(0);
 	anim_player.play("idle_right");
 	rng.randomize();
 	#Timer for 1st powerUP
@@ -90,7 +90,7 @@ func fire_rate_timer_done():
 	fire_rate=0.4;
 
 func speed_timer_done():
-	speed=250;
+	speed=150;
 
 func activatePowerUP(powerUP):
 	if (powerUP==0):
@@ -102,7 +102,7 @@ func activatePowerUP(powerUP):
 	elif (powerUP==2):
 		restoreMovement();
 	elif (powerUP==3):
-		_setUP(100)
+		_setHP(100)
 		
 func _physics_process(delta):
 	var charRotation = characterCam.get_rotation();
