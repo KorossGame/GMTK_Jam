@@ -6,18 +6,23 @@ onready var invulnerabilityTimer = get_node("../../InvulnerabilityTimer");
 onready var RespawnPoint = get_node("../../RespawnPoint");
 onready var HealthBar = get_node("../../CanvasLayer/HealthBar/ProgressBar");
 onready var HP = maxHP setget _setHP;
+var canDie=true;
 
 func kill():
-	anim_player.play("Death")
-	set_physics_process(false);
-	set_process(false);
-	yield (get_tree().create_timer(2), "timeout");
-	respawn();
+	if (canDie):
+		anim_player.play("Death")
+		canDie=!canDie;
+		set_physics_process(false);
+#		set_process(false);
+		yield (get_tree().create_timer(2), "timeout");
+		respawn();
 	
 func damage(amount):
 	if (invulnerabilityTimer.is_stopped()):
 		invulnerabilityTimer.start();
+		anim_player2.play("Hit")
 		_setHP(HP-amount);
+		
 
 func _setHP(value):
 	var prevHP=HP;
@@ -32,6 +37,7 @@ func respawn():
 	set_process(true);
 	anim_player.play("idle_right")
 	_setHP(maxHP);
+	canDie=!canDie;
 	
 #Objects
 var bullet = preload("res://Prefabs/Bullet.tscn");
@@ -41,6 +47,7 @@ export var speed = 150;
 var direction = Vector2();
 
 onready var anim_player: AnimationPlayer = get_node("AnimationPlayer");
+onready var anim_player2: AnimationPlayer = get_node("AnimationPlayer2");
 
 #Movement binds
 var actions=["ui_left", "ui_up", "ui_down", "ui_right"];
@@ -57,7 +64,7 @@ var characterCam;
 var bulletPoint;
 
 #Offset from Player center
-var bulletOffset = 40;
+var bulletOffset = 20;
 
 #PowerUP time
 var timer;
@@ -156,7 +163,7 @@ func _physics_process(delta):
 		
 		#Apply Rotation of cam
 		characterCam.set_rotation_degrees(90);
-		bulletPoint.position = Vector2(0, bulletOffset);
+		bulletPoint.position = Vector2(0, 40);
 		
 		#Animation
 		anim_player.play("walk_down")
@@ -229,13 +236,6 @@ func getTimeLeft1():
 	 return timer1.get_time_left()
 	
 func _process(delta):
-	#Timers
-	timer.get_time_left();
-	timer1.get_time_left();
-	
-	if (Input.is_action_pressed("ui_select")):
-		damage(10);
-
 	#Check if player hits fire button
 	if (Input.is_action_pressed("fire") && can_fire):
 		#Create instance
