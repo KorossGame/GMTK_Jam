@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Prefabs/GotoNextRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://Scripts/FireRateLabel.gd" type="Script" id=22]
 [ext_resource path="res://DUNGRG__.TTF" type="DynamicFontData" id=23]
 [ext_resource path="res://Prefabs/Bot.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Prefabs/GotoNextScene.tscn" type="PackedScene" id=25]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -539,3 +540,6 @@ position = Vector2( 1295.3, 816.623 )
 
 [node name="Bot" parent="." instance=ExtResource( 24 )]
 position = Vector2( 1324.24, 441.972 )
+
+[node name="NextScene" parent="." instance=ExtResource( 25 )]
+position = Vector2( 1504.02, 1424.85 )
