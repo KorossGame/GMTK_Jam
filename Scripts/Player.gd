@@ -10,6 +10,8 @@ var canDie=true;
 
 func kill():
 	if (canDie):
+		Audio.stream = load("res://Sounds/Die.wav");
+		Audio.play()
 		anim_player.play("Death")
 		canDie=!canDie;
 		set_physics_process(false);
@@ -22,7 +24,8 @@ func damage(amount):
 		invulnerabilityTimer.start();
 		anim_player2.play("Hit")
 		_setHP(HP-amount);
-		
+		AudioSecond.stream = load("res://Sounds/Hit.ogg");
+		AudioSecond.play()
 
 func _setHP(value):
 	var prevHP=HP;
@@ -74,12 +77,19 @@ var powerUPTime=20;
 func _init():
 	restoreMovement();
 
+var Audio = AudioStreamPlayer.new()
+var AudioSecond = AudioStreamPlayer.new()
+
 func _ready():
 	characterCam=get_node("Camera2D");
 	bulletPoint=get_node("BulletPoint");
-	damage(0);
 	anim_player.play("idle_right");
 	rng.randomize();
+	_setHP(100);
+	#Sounds
+	self.add_child(Audio);
+	self.add_child(AudioSecond);
+	
 	#Timer for 1st powerUP
 	timer = Timer.new();
 	timer.set_one_shot(true);
@@ -207,7 +217,7 @@ func restoreMovement():
 func newMovement():
 	var usedActions=[];
 	resetActions();
-	 
+	
 	for event in events:
 		var newEvent = InputEventKey.new()
 		newEvent.scancode = event
@@ -238,6 +248,10 @@ func getTimeLeft1():
 func _process(delta):
 	#Check if player hits fire button
 	if (Input.is_action_pressed("fire") && can_fire):
+		#Play Audio
+		Audio.stream = load("res://Sounds/Fire.ogg");
+		Audio.play()
+		
 		#Create instance
 		var bulletInstance = bullet.instance();
 		bulletInstance.position = $BulletPoint.get_global_position();
