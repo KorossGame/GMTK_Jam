@@ -254,8 +254,8 @@ volume_db = -20.194
 autoplay = true
 
 [node name="MenuWallpaper" type="Sprite" parent="."]
-position = Vector2( 955.442, 527.51 )
-scale = Vector2( 0.506255, 0.502351 )
+position = Vector2( 955.442, 545.621 )
+scale = Vector2( 0.506255, 0.519112 )
 texture = ExtResource( 5 )
 
 [node name="Shawarma" type="Area2D" parent="."]
