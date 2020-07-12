@@ -7,11 +7,11 @@
 [ext_resource path="res://MenuWallpaper.png" type="Texture" id=5]
 [ext_resource path="res://Prefabs/Hells Shawarma.tscn" type="PackedScene" id=6]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 168
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 100
 font_data = ExtResource( 2 )
 
@@ -47,7 +47,7 @@ margin_left = -492.0
 margin_top = 82.0542
 margin_right = 492.0
 margin_bottom = 287.054
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Shawarma Dungeon"
 align = 1
 __meta__ = {
@@ -73,7 +73,7 @@ margin_left = -212.5
 margin_top = -61.0
 margin_right = 212.5
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "New Level"
 align = 1
 __meta__ = {

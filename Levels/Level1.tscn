@@ -289,9 +289,41 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 4/shapes = [  ]
 4/z_index = 0
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=14]
 size = 50
 font_data = ExtResource( 23 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=17]
 resource_name = "Fade"
@@ -341,43 +373,11 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=20]
-resource_name = "Fade"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="Animation" id=21]
-resource_name = "Fade"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=20]
 size = 23
 font_data = ExtResource( 23 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=21]
 size = 23
 font_data = ExtResource( 23 )
 
@@ -484,7 +484,7 @@ margin_left = 607.428
 margin_top = 112.393
 margin_right = 1028.43
 margin_bottom = 315.393
-custom_fonts/normal_font = SubResource( 16 )
+custom_fonts/normal_font = SubResource( 14 )
 text = "Welcome to the dungeon!
 WASD - to move
 Mouse 1 - shoot"
@@ -494,7 +494,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Guide"]
-anims/Fade = SubResource( 17 )
+anims/Fade = SubResource( 15 )
 
 [node name="Guide2" type="RichTextLabel" parent="."]
 anchor_left = 0.5
@@ -505,7 +505,7 @@ margin_left = 427.365
 margin_top = 389.617
 margin_right = 879.365
 margin_bottom = 460.617
-custom_fonts/normal_font = SubResource( 16 )
+custom_fonts/normal_font = SubResource( 14 )
 text = "Every room control changes"
 script = ExtResource( 26 )
 __meta__ = {
@@ -513,7 +513,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Guide2"]
-anims/Fade = SubResource( 18 )
+anims/Fade = SubResource( 16 )
 
 [node name="Guide3" type="RichTextLabel" parent="."]
 anchor_left = 0.5
@@ -524,7 +524,7 @@ margin_left = 119.756
 margin_top = 626.258
 margin_right = 571.756
 margin_bottom = 755.258
-custom_fonts/normal_font = SubResource( 16 )
+custom_fonts/normal_font = SubResource( 14 )
 text = "Switches restores movement for 20 seconds"
 script = ExtResource( 27 )
 __meta__ = {
@@ -532,7 +532,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Guide3"]
-anims/Fade = SubResource( 19 )
+anims/Fade = SubResource( 17 )
 
 [node name="Guide4" type="RichTextLabel" parent="."]
 anchor_left = 0.5
@@ -543,7 +543,7 @@ margin_left = 1321.82
 margin_top = 654.616
 margin_right = 1729.82
 margin_bottom = 781.616
-custom_fonts/normal_font = SubResource( 16 )
+custom_fonts/normal_font = SubResource( 14 )
 text = "Here is an ememy, try to kill it or run away :)"
 script = ExtResource( 28 )
 __meta__ = {
@@ -551,7 +551,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Guide4"]
-anims/Fade = SubResource( 20 )
+anims/Fade = SubResource( 18 )
 
 [node name="Guide5" type="RichTextLabel" parent="."]
 anchor_left = 0.5
@@ -562,7 +562,7 @@ margin_left = 1216.0
 margin_top = 1179.0
 margin_right = 1566.0
 margin_bottom = 1571.0
-custom_fonts/normal_font = SubResource( 16 )
+custom_fonts/normal_font = SubResource( 14 )
 text = "Shawarmas gives different bonuses as:
 * HP
 * Normal Movement
@@ -574,7 +574,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Guide5"]
-anims/Fade = SubResource( 21 )
+anims/Fade = SubResource( 19 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -676,7 +676,7 @@ margin_left = 96.0
 margin_top = 144.0
 margin_right = 136.0
 margin_bottom = 184.0
-custom_fonts/normal_font = SubResource( 14 )
+custom_fonts/normal_font = SubResource( 20 )
 script = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -687,7 +687,7 @@ margin_left = 160.0
 margin_top = 144.0
 margin_right = 200.0
 margin_bottom = 184.0
-custom_fonts/normal_font = SubResource( 15 )
+custom_fonts/normal_font = SubResource( 21 )
 script = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
