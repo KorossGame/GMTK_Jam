@@ -22,22 +22,6 @@ tracks/0/keys = {
 "values": [ 36, 37, 38, 39, 40, 41 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Hit"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 0.138696, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.870588, 0.239216, 0.239216, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-
 [sub_resource type="Animation" id=4]
 length = 0.1
 loop = true
@@ -166,6 +150,21 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6, 7, 8 ]
 }
 
+[sub_resource type="Animation" id=12]
+resource_name = "Hit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.788235, 0.337255, 0.337255, 1 ), Color( 1, 1, 1, 1 ), Color( 0.788235, 0.337255, 0.337255, 1 ), Color( 1, 1, 1, 1 ), Color( 0.788235, 0.337255, 0.337255, 1 ), Color( 1, 1, 1, 1 ), Color( 0.788235, 0.337255, 0.337255, 1 ), Color( 1, 1, 1, 1 ), Color( 0.788235, 0.337255, 0.337255, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -192,7 +191,6 @@ position = Vector2( 48, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Death = SubResource( 2 )
-anims/Hit = SubResource( 3 )
 anims/idle_down = SubResource( 4 )
 anims/idle_left = SubResource( 5 )
 anims/idle_right = SubResource( 6 )
@@ -201,3 +199,6 @@ anims/walk_down = SubResource( 8 )
 anims/walk_left = SubResource( 9 )
 anims/walk_right = SubResource( 10 )
 anims/walk_up = SubResource( 11 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/Hit = SubResource( 12 )

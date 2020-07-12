@@ -13,14 +13,16 @@ func kill():
 		anim_player.play("Death")
 		canDie=!canDie;
 		set_physics_process(false);
-		set_process(false);
+#		set_process(false);
 		yield (get_tree().create_timer(2), "timeout");
 		respawn();
 	
 func damage(amount):
 	if (invulnerabilityTimer.is_stopped()):
 		invulnerabilityTimer.start();
+		anim_player2.play("Hit")
 		_setHP(HP-amount);
+		
 
 func _setHP(value):
 	var prevHP=HP;
@@ -45,6 +47,7 @@ export var speed = 150;
 var direction = Vector2();
 
 onready var anim_player: AnimationPlayer = get_node("AnimationPlayer");
+onready var anim_player2: AnimationPlayer = get_node("AnimationPlayer2");
 
 #Movement binds
 var actions=["ui_left", "ui_up", "ui_down", "ui_right"];

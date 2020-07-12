@@ -4,6 +4,8 @@ var bullet = preload("res://Prefabs/Bullet.tscn");
 
 onready var player = get_parent().get_node("YSort/Player");
 onready var HealthBar = get_node("EnemyHealthBar/ProgressBar");
+onready var anim_player: AnimationPlayer = get_node("AnimationPlayer");
+onready var anim_player2: AnimationPlayer = get_node("AnimationPlayer2");
 
 var speed = 75;
 var direction = Vector2();
@@ -13,21 +15,29 @@ var can_fire = true;
 var fire_rate = 0.5;
 var bulletSpeed=350;
 var bulletPoint;
-
+var canDie=true;
 var HP;
 var maxHP=100;
 
 func damage(amount):
+	anim_player2.play("Hit")
 	_setHP(HP-amount)
 	
 func _setHP(newHP):
 	HP=newHP;
 	HealthBar.value=HP;
 	if (HP<=0):
+		anim_player.play("Death")
 		kill();
 
 func kill():
-	queue_free()
+	if (canDie):
+		set_physics_process(false);
+		set_process(false);
+		canDie=!canDie
+		yield (get_tree().create_timer(0.6), "timeout")	
+		queue_free()
+	
 
 func _ready():
 	set_process(true);
@@ -42,23 +52,28 @@ func _process(delta):
 		#Movement
 		if (player.position.x < position.x - playerOffset):
 			direction.x = -1;
+			anim_player.play("walk_left")
 			bulletPoint.position = Vector2(cos(angle)-bulletOffset, sin(angle));
 			
 		elif (player.position.x > position.x + playerOffset):
 			direction.x = 1;
+			anim_player.play("walk_right")
 			bulletPoint.position = Vector2(cos(angle)+bulletOffset, sin(angle));
 		else:
 			direction.x = 0;
 			
 		if (player.position.y < position.y - playerOffset):
 			direction.y = -1;
+			anim_player.play("walk_up")
 			bulletPoint.position = Vector2(cos(angle), sin(angle)-bulletOffset);
 			
 		elif (player.position.y > position.y  + playerOffset):
 			direction.y = 1;
+			anim_player.play("walk_down")
 			bulletPoint.position = Vector2(cos(angle), sin(angle)+bulletOffset);
 		else:
 			direction.y = 0;
+			
 		
 		move_and_slide(direction*speed);
 		

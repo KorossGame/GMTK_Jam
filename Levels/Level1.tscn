@@ -395,6 +395,7 @@ collision_mask = 2147483657
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 215.464, 123.252 )
+bullet_speed = 400
 
 [node name="NextRoom" parent="." instance=ExtResource( 1 )]
 position = Vector2( 316.285, 419.009 )
