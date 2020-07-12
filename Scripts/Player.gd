@@ -186,8 +186,6 @@ func _process(delta):
 		yield (get_tree().create_timer(fire_rate), "timeout");
 		can_fire = !can_fire;
 
-
-export var push_speed = 50
 func check_box_collision(motion):
 	if abs(motion.x) + abs(motion.y) > 1:
 		return
