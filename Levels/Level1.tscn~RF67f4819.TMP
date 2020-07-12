@@ -292,69 +292,6 @@ position = Vector2( 110.871, 191.645 )
 [node name="Shawarma2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 65.4626, 190.804 )
 
-[node name="Shawarma3" parent="." instance=ExtResource( 5 )]
-position = Vector2( -82.1657, 63.8119 )
-
-[node name="Shawarma4" parent="." instance=ExtResource( 5 )]
-position = Vector2( -64.7043, 7.4592 )
-
-[node name="Shawarma5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 8.31618, -36.988 )
-
-[node name="Shawarma6" parent="." instance=ExtResource( 5 )]
-position = Vector2( -71.0539, -53.6557 )
-
-[node name="Shawarma7" parent="." instance=ExtResource( 5 )]
-position = Vector2( 39.2705, -79.0542 )
-
-[node name="Shawarma8" parent="." instance=ExtResource( 5 )]
-position = Vector2( 139.277, -55.2432 )
-
-[node name="Shawarma9" parent="." instance=ExtResource( 5 )]
-position = Vector2( 247.22, -44.1314 )
-
-[node name="Shawarma10" parent="." instance=ExtResource( 5 )]
-position = Vector2( 324.209, -44.1314 )
-
-[node name="Shawarma11" parent="." instance=ExtResource( 5 )]
-position = Vector2( 406.754, -44.9251 )
-
-[node name="Shawarma12" parent="." instance=ExtResource( 5 )]
-position = Vector2( 490.092, -42.544 )
-
-[node name="Shawarma13" parent="." instance=ExtResource( 5 )]
-position = Vector2( 560.732, -40.1628 )
-
-[node name="Shawarma14" parent="." instance=ExtResource( 5 )]
-position = Vector2( 584.543, 68.5741 )
-
-[node name="Shawarma15" parent="." instance=ExtResource( 5 )]
-position = Vector2( 567.081, 151.119 )
-
-[node name="Shawarma16" parent="." instance=ExtResource( 5 )]
-position = Vector2( 560.732, 211.44 )
-
-[node name="Shawarma17" parent="." instance=ExtResource( 5 )]
-position = Vector2( 563.906, 293.985 )
-
-[node name="Shawarma18" parent="." instance=ExtResource( 5 )]
-position = Vector2( 560.732, 355.1 )
-
-[node name="Shawarma19" parent="." instance=ExtResource( 5 )]
-position = Vector2( 527.396, 385.261 )
-
-[node name="Shawarma20" parent="." instance=ExtResource( 5 )]
-position = Vector2( 425.009, 385.261 )
-
-[node name="Shawarma21" parent="." instance=ExtResource( 5 )]
-position = Vector2( 222.615, 387.642 )
-
-[node name="Shawarma22" parent="." instance=ExtResource( 5 )]
-position = Vector2( 130.546, 394.785 )
-
-[node name="Shawarma23" parent="." instance=ExtResource( 5 )]
-position = Vector2( 130.546, 394.785 )
-
 [node name="Stickman" type="Sprite" parent="."]
 position = Vector2( 706.696, 234.336 )
 texture = ExtResource( 6 )
@@ -386,3 +323,13 @@ collision_mask = 12
 [node name="NextRoom" parent="." instance=ExtResource( 1 )]
 position = Vector2( 317.366, 414.198 )
 scale = Vector2( 10, 1 )
+
+[node name="FirePowerTimer" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="SpeedTimer" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="NormalMovementTimer" type="Timer" parent="."]
+wait_time = 30.0
+[connection signal="body_entered" from="Shawarma" to="Shawarma" method="_on_Shawarma_body_entered"]
