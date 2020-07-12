@@ -16,7 +16,7 @@ script = ExtResource( 2 )
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -5.0
 margin_top = -6.0
-margin_right = 1915.0
+margin_right = 1926.0
 margin_bottom = 1084.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
@@ -26,7 +26,7 @@ __meta__ = {
 [node name="CreditsContainer" type="Control" parent="."]
 margin_left = -3.0
 margin_top = 62.0
-margin_right = 1920.0
+margin_right = 1943.0
 margin_bottom = 1067.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -34,10 +34,10 @@ __meta__ = {
 
 [node name="Line" type="Label" parent="CreditsContainer"]
 anchor_right = 1.0
-margin_left = 2.98657
-margin_top = 986.014
-margin_right = 2.98669
-margin_bottom = 1021.01
+margin_left = 2.98669
+margin_top = 1032.34
+margin_right = 2.98682
+margin_bottom = 1103.34
 custom_fonts/font = SubResource( 1 )
 text = "Credits line"
 align = 1
