@@ -3,8 +3,7 @@ extends Node2D
 var triggers=[]
 	
 func _process(delta):
-	if (len(triggers)>=38):
-		get_tree().change_scene("res://Levels/ThanksForPlaying.tscn");
+	get_tree().change_scene("res://Levels/ThanksForPlaying.tscn");
 
 func _on_Bot_tree_exiting():
 	triggers.append(0);

@@ -659,9 +659,12 @@ collision_mask = 2147483657
 [node name="Player" type="KinematicBody2D" parent="YSort" groups=[
 "player",
 ]]
-position = Vector2( 215.464, 123.252 )
+position = Vector2( 1465.89, 1232.24 )
 collision_mask = 62
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 push_speed = 100
 bullet_speed = 400
 
@@ -922,6 +925,7 @@ position = Vector2( 1614.89, 1453.9 )
 position = Vector2( 1614.28, 1520.46 )
 [connection signal="body_entered" from="RestoreSwitch" to="Guide3" method="_on_RestoreSwitch_body_entered"]
 [connection signal="body_entered" from="MovementMess" to="Guide2" method="_on_MovementMess_body_entered"]
+[connection signal="body_entered" from="NextRoom2" to="Guide5" method="_on_NextRoom2_body_entered"]
 [connection signal="body_entered" from="NextRoom3" to="Guide4" method="_on_NextRoom2_body_entered"]
 [connection signal="tree_exiting" from="Bot" to="Guide4" method="_on_Bot_tree_exiting"]
 [connection signal="body_entered" from="Shawarma24" to="Guide5" method="_on_Shawarma24_body_entered"]
