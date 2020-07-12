@@ -1,7 +1,9 @@
 extends KinematicBody2D
 
-onready var player = get_parent().get_node("YSort/Player");
 var bullet = preload("res://Prefabs/Bullet.tscn");
+
+onready var player = get_parent().get_node("YSort/Player");
+onready var HealthBar = get_node("EnemyHealthBar/ProgressBar");
 
 var speed = 75;
 var direction = Vector2();
@@ -13,13 +15,14 @@ var bulletSpeed=350;
 var bulletPoint;
 
 var HP;
-var maxHP=20;
+var maxHP=100;
 
 func damage(amount):
 	_setHP(HP-amount)
 	
 func _setHP(newHP):
 	HP=newHP;
+	HealthBar.value=HP;
 	if (HP<=0):
 		kill();
 
@@ -30,6 +33,7 @@ func _ready():
 	set_process(true);
 	bulletPoint=get_node("BulletPoint");
 	_setHP(maxHP);
+	HealthBar.set_max(maxHP);
 
 func _process(delta):
 	if (seePlayer()):
