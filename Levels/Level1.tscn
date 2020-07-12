@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Prefabs/GotoNextRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://Prefabs/InvulnerabilityTimer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Prefabs/RestoreSwitch.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=12]
-[ext_resource path="res://Prefabs/Bot.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Sprites/PowerUPs/normal_movement.png" type="Texture" id=13]
 [ext_resource path="res://Scripts/NormalMovement.gd" type="Script" id=14]
 [ext_resource path="res://Sprites/PowerUPs/Speed.png" type="Texture" id=15]
@@ -24,6 +23,7 @@
 [ext_resource path="res://Scripts/SpeedTimeLabel.gd" type="Script" id=21]
 [ext_resource path="res://Scripts/FireRateLabel.gd" type="Script" id=22]
 [ext_resource path="res://DUNGRG__.TTF" type="DynamicFontData" id=23]
+[ext_resource path="res://Prefabs/Bot.tscn" type="PackedScene" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -501,9 +501,6 @@ __meta__ = {
 [node name="RespawnPoint" parent="." instance=ExtResource( 9 )]
 position = Vector2( 108.39, 136.404 )
 
-[node name="Bot" parent="." instance=ExtResource( 13 )]
-position = Vector2( 1420.3, 608.997 )
-
 [node name="Collumn" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1102.74, 656.012 )
 
@@ -539,3 +536,6 @@ position = Vector2( 1295.3, 785.509 )
 
 [node name="Collumn12" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1295.3, 816.623 )
+
+[node name="Bot" parent="." instance=ExtResource( 24 )]
+position = Vector2( 1324.24, 441.972 )
