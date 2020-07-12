@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Prefabs/GotoNextRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,17 @@
 [ext_resource path="res://Prefabs/RestoreSwitch.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=12]
 [ext_resource path="res://Prefabs/Bot.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Sprites/PowerUPs/normal_movement.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/NormalMovement.gd" type="Script" id=14]
+[ext_resource path="res://Sprites/PowerUPs/Speed.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/Speed.gd" type="Script" id=16]
+[ext_resource path="res://Sprites/PowerUPs/Fire_rate.png" type="Texture" id=17]
+[ext_resource path="res://Scripts/FireRate.gd" type="Script" id=18]
+[ext_resource path="res://Sprites/PowerUPs/Heal.png" type="Texture" id=19]
+[ext_resource path="res://Scripts/Heal.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/SpeedTimeLabel.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/FireRateLabel.gd" type="Script" id=22]
+[ext_resource path="res://DUNGRG__.TTF" type="DynamicFontData" id=23]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -273,6 +284,14 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 4/shapes = [  ]
 4/z_index = 0
 
+[sub_resource type="DynamicFont" id=14]
+size = 23
+font_data = ExtResource( 23 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 23
+font_data = ExtResource( 23 )
+
 [node name="Game" type="Node2D"]
 script = SubResource( 1 )
 
@@ -332,7 +351,7 @@ position = Vector2( 406.754, -44.9251 )
 position = Vector2( 490.092, -42.544 )
 
 [node name="Shawarma13" parent="." instance=ExtResource( 5 )]
-position = Vector2( 560.732, -40.1628 )
+position = Vector2( 547.247, -43.1594 )
 
 [node name="Shawarma14" parent="." instance=ExtResource( 5 )]
 position = Vector2( 584.543, 68.5741 )
@@ -368,10 +387,10 @@ position = Vector2( 130.546, 394.785 )
 position = Vector2( 706.696, 234.336 )
 texture = ExtResource( 6 )
 
-[node name="YSort" type="YSort" parent="."]
-
-[node name="RestoreSwitch" parent="YSort" instance=ExtResource( 11 )]
+[node name="RestoreSwitch" parent="." instance=ExtResource( 11 )]
 position = Vector2( 304.182, 783.643 )
+
+[node name="YSort" type="YSort" parent="."]
 
 [node name="Collumn2" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 144, 272 )
@@ -395,6 +414,7 @@ collision_mask = 2147483657
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 215.464, 123.252 )
+bullet_speed = 400
 
 [node name="NextRoom" parent="." instance=ExtResource( 1 )]
 position = Vector2( 316.285, 419.009 )
@@ -403,6 +423,80 @@ scale = Vector2( 10, 1 )
 [node name="InvulnerabilityTimer" parent="." instance=ExtResource( 10 )]
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 8 )]
+
+[node name="NormalMovement" type="Popup" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NormalMovement" type="Sprite" parent="CanvasLayer/NormalMovement"]
+position = Vector2( 64, 120 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 13 )
+
+[node name="Speed" type="Popup" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speed" type="Sprite" parent="CanvasLayer/Speed"]
+position = Vector2( 120, 120 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 15 )
+
+[node name="FireRate" type="Popup" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireRate" type="Sprite" parent="CanvasLayer/FireRate"]
+position = Vector2( 176, 120 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 17 )
+
+[node name="Heal" type="Popup" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heal" type="Sprite" parent="CanvasLayer/Heal"]
+position = Vector2( 232, 120 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 19 )
+
+[node name="SpeedTimeLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 96.0
+margin_top = 144.0
+margin_right = 136.0
+margin_bottom = 184.0
+custom_fonts/normal_font = SubResource( 14 )
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireRateLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 160.0
+margin_top = 144.0
+margin_right = 200.0
+margin_bottom = 184.0
+custom_fonts/normal_font = SubResource( 15 )
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RespawnPoint" parent="." instance=ExtResource( 9 )]
 position = Vector2( 108.39, 136.404 )
