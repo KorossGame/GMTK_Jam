@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15.6883, 17.4536 )
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="Collumn" type="StaticBody2D"]
 collision_layer = 8
 collision_mask = 17
 
