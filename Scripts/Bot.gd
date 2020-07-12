@@ -18,7 +18,7 @@ var HP;
 var maxHP=100;
 
 func damage(amount):
-	_setHP(HP-amount)
+	_setHP(HP-amount);
 	
 func _setHP(newHP):
 	HP=newHP;
