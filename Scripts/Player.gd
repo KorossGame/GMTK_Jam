@@ -95,23 +95,43 @@ func _ready():
 	
 func fire_rate_timer_done():
 	fire_rate=0.4;
+	get_node("../../CanvasLayer/FireRate").popup_hide()
 
 func speed_timer_done():
 	speed=150;
+	get_node("../../CanvasLayer/Speed").popup_hide()
 
 func activatePowerUP(powerUP):
 	if (powerUP==0):
 		fire_rate=0.2;
+		get_node("../../CanvasLayer/FireRate").show()
 		timer.start()
 	elif (powerUP==1):
 		speed=500;
 		timer1.start();
 	elif (powerUP==2):
 		restoreMovement();
+		get_node("../../CanvasLayer/NormalMovement").popup_show()
 	elif (powerUP==3):
 		_setHP(100)
+		get_node("../../CanvasLayer/Heal").popup_show()
 		
 func _physics_process(delta):
+	
+	if timer.time_left > 0:
+		get_node("../../CanvasLayer/FireRateLabel").set_time() 
+		get_node("../../CanvasLayer/FireRate").show()
+	else:
+		get_node("../../CanvasLayer/FireRateLabel").timeclear() 
+		get_node("../../CanvasLayer/FireRate").hide()
+	
+	if timer1.time_left > 0:
+		get_node("../../CanvasLayer/SpeedTimeLabel").set_time() 
+		get_node("../../CanvasLayer/Speed").show()
+	else:
+		get_node("../../CanvasLayer/SpeedTimeLabel").timeclear()
+		get_node("../../CanvasLayer/Speed").hide()
+	
 	var charRotation = characterCam.get_rotation();
 	
 	#Horizontal
@@ -208,9 +228,14 @@ func resetActions():
 	#Add new binds
 	for action in actions:
 		InputMap.add_action(action);
+		
+func getTimeLeft(): 
+	 return timer.get_time_left()
+
+func getTimeLeft1(): 
+	 return timer1.get_time_left()
 	
 func _process(delta):
-
 	#Check if player hits fire button
 	if (Input.is_action_pressed("fire") && can_fire):
 		#Create instance
