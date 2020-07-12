@@ -1,10 +1,12 @@
-[gd_scene load_steps=39 format=2]
+
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Prefabs/GotoNextRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/dungeon.png" type="Texture" id=3]
 [ext_resource path="res://Prefabs/Collumn.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/Shawarma.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/Guide1.gd" type="Script" id=6]
 [ext_resource path="res://Prefabs/Box.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Prefabs/UI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Prefabs/RespawnPoint.tscn" type="PackedScene" id=9]
@@ -23,6 +25,11 @@
 [ext_resource path="res://Scripts/FireRateLabel.gd" type="Script" id=22]
 [ext_resource path="res://DUNGRG__.TTF" type="DynamicFontData" id=23]
 [ext_resource path="res://Prefabs/Bot.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Prefabs/GotoNextScene.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Scripts/Guide2.gd" type="Script" id=26]
+[ext_resource path="res://Scripts/Guide3.gd" type="Script" id=27]
+[ext_resource path="res://Scripts/Guide4.gd" type="Script" id=28]
+[ext_resource path="res://Scripts/Guide5.gd" type="Script" id=29]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -284,10 +291,94 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 4/z_index = 0
 
 [sub_resource type="DynamicFont" id=14]
+size = 50
+font_data = ExtResource( 23 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=20]
 size = 23
 font_data = ExtResource( 23 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=21]
 size = 23
 font_data = ExtResource( 23 )
 
@@ -390,6 +481,112 @@ position = Vector2( 1744, 656 )
 [node name="Collumn25" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 1776, 656 )
 
+[node name="RestoreSwitch" parent="." instance=ExtResource( 11 )]
+position = Vector2( 304.182, 783.643 )
+
+[node name="Guide" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 607.428
+margin_top = 112.393
+margin_right = 1028.43
+margin_bottom = 315.393
+custom_fonts/normal_font = SubResource( 14 )
+text = "Welcome to the dungeon!
+WASD - to move
+Mouse 1 - shoot"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guide"]
+anims/Fade = SubResource( 15 )
+
+[node name="Guide2" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 427.365
+margin_top = 389.617
+margin_right = 879.365
+margin_bottom = 460.617
+custom_fonts/normal_font = SubResource( 14 )
+text = "Every room control changes"
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guide2"]
+anims/Fade = SubResource( 16 )
+
+[node name="Guide3" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 119.756
+margin_top = 626.258
+margin_right = 571.756
+margin_bottom = 755.258
+custom_fonts/normal_font = SubResource( 14 )
+text = "Switches restores movement for 20 seconds"
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guide3"]
+anims/Fade = SubResource( 17 )
+
+[node name="Guide4" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 1321.82
+margin_top = 654.616
+margin_right = 1729.82
+margin_bottom = 781.616
+custom_fonts/normal_font = SubResource( 14 )
+text = "Here is an ememy, try to kill it or run away :)"
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guide4"]
+anims/Fade = SubResource( 18 )
+
+[node name="Guide5" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 1216.0
+margin_top = 1179.0
+margin_right = 1566.0
+margin_bottom = 1571.0
+custom_fonts/normal_font = SubResource( 14 )
+text = "Shawarmas gives different bonuses as:
+* HP
+* Normal Movement
+* Fire Rate
+* Fast Movement"
+script = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guide5"]
+anims/Fade = SubResource( 19 )
+
+[node name="YSort" type="YSort" parent="."]
+
 [node name="Collumn26" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 1808, 656 )
 
@@ -430,6 +627,15 @@ scale = Vector2( 10, 1 )
 
 [node name="MovementMess" parent="." instance=ExtResource( 1 )]
 position = Vector2( 320, 472 )
+scale = Vector2( 10, 1 )
+
+[node name="NextRoom2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1474.45, 974.93 )
+scale = Vector2( 10, 1 )
+
+[node name="NextRoom3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1049.81, 714.594 )
+rotation = 1.57079
 scale = Vector2( 10, 1 )
 
 [node name="InvulnerabilityTimer" parent="." instance=ExtResource( 10 )]
@@ -493,7 +699,7 @@ margin_left = 96.0
 margin_top = 144.0
 margin_right = 136.0
 margin_bottom = 184.0
-custom_fonts/normal_font = SubResource( 14 )
+custom_fonts/normal_font = SubResource( 20 )
 script = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -504,7 +710,7 @@ margin_left = 160.0
 margin_top = 144.0
 margin_right = 200.0
 margin_bottom = 184.0
-custom_fonts/normal_font = SubResource( 15 )
+custom_fonts/normal_font = SubResource( 21 )
 script = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -515,3 +721,66 @@ position = Vector2( 108.39, 136.404 )
 
 [node name="Bot" parent="." instance=ExtResource( 24 )]
 position = Vector2( 1472, 544 )
+
+[node name="Collumn" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1102.74, 656.012 )
+
+[node name="Collumn2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1135.53, 656.012 )
+
+[node name="Collumn3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1169.17, 656.853 )
+
+[node name="Collumn4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1201.12, 656.012 )
+
+[node name="Collumn5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1233.08, 655.171 )
+
+[node name="Collumn6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1264.19, 656.012 )
+
+[node name="Collumn7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1296.14, 656.852 )
+
+[node name="Collumn8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1296.14, 687.125 )
+
+[node name="Collumn9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1295.3, 719.92 )
+
+[node name="Collumn10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1296.14, 753.555 )
+
+[node name="Collumn11" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1295.3, 785.509 )
+
+[node name="Collumn12" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1295.3, 816.623 )
+
+[node name="Shawarma24" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1613.96, 1329.66 )
+
+[node name="Shawarma25" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1612.26, 1394.89 )
+
+[node name="Shawarma26" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1614.89, 1453.9 )
+
+[node name="Shawarma27" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1614.28, 1520.46 )
+
+[node name="Bot" parent="." instance=ExtResource( 24 )]
+position = Vector2( 1324.24, 441.972 )
+
+[node name="NextScene" parent="." instance=ExtResource( 25 )]
+position = Vector2( 1471.07, 1705.03 )
+scale = Vector2( 20, 1 )
+[connection signal="body_entered" from="RestoreSwitch" to="Guide3" method="_on_RestoreSwitch_body_entered"]
+[connection signal="body_entered" from="NextRoom" to="Guide2" method="_on_NextRoom_body_entered"]
+[connection signal="body_entered" from="NextRoom2" to="Guide2" method="_on_NextRoom_body_entered"]
+[connection signal="body_entered" from="NextRoom2" to="Guide4" method="_on_NextRoom2_body_entered"]
+[connection signal="body_entered" from="NextRoom3" to="Guide2" method="_on_NextRoom_body_entered"]
+[connection signal="body_entered" from="NextRoom3" to="Guide4" method="_on_NextRoom2_body_entered"]
+[connection signal="body_entered" from="Shawarma24" to="Guide5" method="_on_Shawarma24_body_entered"]
+[connection signal="tree_exiting" from="Bot" to="Guide4" method="_on_Bot_tree_exiting"]
